@@ -87,6 +87,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#08080a" },
+      { property: "og:title", content: "She Sang to a Tortoise — ThatGuy Productions International" },
+      { name: "twitter:title", content: "She Sang to a Tortoise — ThatGuy Productions International" },
+      { name: "description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
+      { property: "og:description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
+      { name: "twitter:description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9a05354c-e9f7-4a2c-9e57-2994448e21a2/id-preview-0d890dab--c117b7a9-5ecc-4c09-a2f5-2bcdcf52f917.lovable.app-1782155860066.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9a05354c-e9f7-4a2c-9e57-2994448e21a2/id-preview-0d890dab--c117b7a9-5ecc-4c09-a2f5-2bcdcf52f917.lovable.app-1782155860066.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
