@@ -4,9 +4,8 @@ import bankingQr from "@/assets/banking-qr.png";
 import { Reveal } from "@/components/site/Reveal";
 import { ProgressBar } from "@/components/site/ProgressBar";
 
-// PLACEHOLDER: replace once the live Back a Buddy campaign URL is known.
 const BACKABUDDY_URL =
-  "https://backabuddy.co.za/BACKABUDDY_CAMPAIGN_SLUG_PLACEHOLDER";
+  "https://www.backabuddy.co.za/campaign/she-sang-to-a-tortoise";
 
 const BANKING = [
   ["Bank", "Capitec"],
@@ -90,13 +89,13 @@ function CampaignPage() {
               <Info className="h-4 w-4" /> Interim bridge support
             </div>
             <h2 className="mt-4 font-display text-2xl text-[color:var(--cream)] sm:text-3xl">
-              Support right now, before the campaign goes live.
+              Support right now, directly.
             </h2>
             <p className="mt-4 text-[color:var(--cream)]/80">
-              The formal campaign and joint account are still being set up. If you'd like to help
-              immediately, you can send support directly below — every contribution will be recorded and
-              accounted for once the joint account opens. This goes directly to Phil Bölke and is distinct
-              from the joint-account campaign above.
+              The formal Back a Buddy campaign is live above. If you'd prefer to help immediately by bank
+              transfer, you can send support directly below — every contribution will be recorded and
+              accounted for. This goes directly to Phil Bölke and is distinct from the joint-account
+              campaign.
             </p>
 
             <div className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
