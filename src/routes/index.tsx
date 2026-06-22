@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
+import bankingQr from "@/assets/banking-qr.png";
 import { Reveal } from "@/components/site/Reveal";
 import { ProgressBar } from "@/components/site/ProgressBar";
 import { ShareButtons } from "@/components/site/ShareButtons";
