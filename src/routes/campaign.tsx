@@ -4,9 +4,8 @@ import bankingQr from "@/assets/banking-qr.png";
 import { Reveal } from "@/components/site/Reveal";
 import { ProgressBar } from "@/components/site/ProgressBar";
 
-// PLACEHOLDER: replace once the live Back a Buddy campaign URL is known.
 const BACKABUDDY_URL =
-  "https://backabuddy.co.za/BACKABUDDY_CAMPAIGN_SLUG_PLACEHOLDER";
+  "https://www.backabuddy.co.za/campaign/she-sang-to-a-tortoise";
 
 const BANKING = [
   ["Bank", "Capitec"],
