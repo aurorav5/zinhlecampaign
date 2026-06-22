@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Youtube, Facebook } from "lucide-react";
-import brandBanner from "@/assets/brand-banner.png";
+import brandBanner from "@/assets/brand-banner.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
