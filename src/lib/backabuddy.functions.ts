@@ -102,7 +102,7 @@ async function writeCache(stats: BackabuddyStats): Promise<void> {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await supabaseAdmin.from("cache_kv").upsert({
       key: CACHE_KEY,
-      value: stats as unknown as Record<string, unknown>,
+      value: stats as unknown as never,
       expires_at: new Date(Date.now() + CACHE_TTL_MS).toISOString(),
     });
   } catch {
