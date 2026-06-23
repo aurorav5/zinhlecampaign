@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
-import bankingQr from "@/assets/banking-qr.png";
 import { Reveal } from "@/components/site/Reveal";
-import { ProgressBar } from "@/components/site/ProgressBar";
+import { BackabuddyProgress } from "@/components/site/BackabuddyProgress";
+import { BridgeSupport } from "@/components/site/BridgeSupport";
 import { ShareButtons } from "@/components/site/ShareButtons";
 
 export const Route = createFileRoute("/")({
@@ -160,8 +160,7 @@ function HomePage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-8">
-              {/* Update `raised` manually as the BackaBuddy total moves. Only Back a Buddy contributions are reflected in this tracker. */}
-              <ProgressBar raised={5000} target={250000} />
+              <BackabuddyProgress tone="dark" />
               <p className="mt-3 text-xs text-[color:var(--cream)]/55">
                 Tracker reflects Back a Buddy contributions only.
               </p>
@@ -181,62 +180,7 @@ function HomePage() {
       {/* BRIDGE / INTERIM SUPPORT */}
       <section className="border-t border-[color:var(--gold)]/20 bg-[color:var(--offwhite)] px-5 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <Reveal>
-            <div className="mb-6 inline-flex items-center rounded-full border border-[color:var(--amber-warm)]/40 bg-[color:var(--amber-warm)]/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--ink)]">
-              Interim bridge support — directly to Phil Bölke
-            </div>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="max-w-2xl font-display text-2xl text-[color:var(--ink)] sm:text-3xl md:text-4xl">
-              Support right now.
-            </h2>
-            <p className="mt-4 max-w-2xl text-[color:var(--ink)]/85">
-              If you&apos;d like to help, you can send support directly below — every contribution will be
-              recorded and accounted for.
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="mt-10 grid gap-8 rounded-2xl border border-[color:var(--ink)]/10 bg-[color:var(--cream)] p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
-              <div className="space-y-4 text-[color:var(--ink)]">
-                <dl className="space-y-3 text-base sm:text-lg">
-                  <div className="grid gap-1 sm:grid-cols-[140px_1fr]">
-                    <dt className="font-semibold">Bank</dt>
-                    <dd>Capitec</dd>
-                  </div>
-                  <div className="grid gap-1 sm:grid-cols-[140px_1fr]">
-                    <dt className="font-semibold">Account Holder</dt>
-                    <dd>Mr Philippus Bölke</dd>
-                  </div>
-                  <div className="grid gap-1 sm:grid-cols-[140px_1fr]">
-                    <dt className="font-semibold">Business Name</dt>
-                    <dd>Thatguy Productions International</dd>
-                  </div>
-                  <div className="grid gap-1 sm:grid-cols-[140px_1fr]">
-                    <dt className="font-semibold">Account Number</dt>
-                    <dd>2558008516</dd>
-                  </div>
-                  <div className="grid gap-1 sm:grid-cols-[140px_1fr]">
-                    <dt className="font-semibold">SWIFT/BIC</dt>
-                    <dd>CABLZAJJ</dd>
-                  </div>
-                  <div className="grid gap-1 sm:grid-cols-[140px_1fr]">
-                    <dt className="font-semibold">Branch Code</dt>
-                    <dd>470010</dd>
-                  </div>
-                </dl>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="overflow-hidden rounded-xl border border-[color:var(--ink)]/10 bg-white p-2 shadow-sm">
-                  <img
-                    src={bankingQr}
-                    alt="Capitec banking QR code for direct payment to Phil Bölke"
-                    className="h-40 w-40 object-contain sm:h-48 sm:w-48"
-                  />
-                </div>
-                <p className="text-center text-xs text-[color:var(--ink)]/60">Scan to pay</p>
-              </div>
-            </div>
-          </Reveal>
+          <BridgeSupport tone="light" />
         </div>
       </section>
 
