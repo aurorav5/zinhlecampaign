@@ -69,8 +69,11 @@ function CampaignPage() {
 
         <Reveal delay={0.2}>
           <div className="mt-12 rounded-2xl border border-[color:var(--gold)]/30 bg-[color:var(--ink)]/70 p-8 md:p-10">
-            {/* TODO: update `raised` value as the campaign progresses. */}
-            <ProgressBar raised={0} target={250000} />
+            {/* Update `raised` manually as the BackaBuddy total moves. */}
+            <ProgressBar raised={5000} target={250000} />
+            <p className="mt-3 text-xs text-[color:var(--cream)]/55">
+              Tracker reflects Back a Buddy contributions only. Direct bank transfers below are recorded separately.
+            </p>
             <a
               href={BACKABUDDY_URL}
               target="_blank"

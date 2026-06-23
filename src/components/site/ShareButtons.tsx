@@ -3,21 +3,25 @@ import { Facebook, MessageCircle, Link2, Check } from "lucide-react";
 
 const SHARE_TEXT =
   "She Sang to a Tortoise — a true story from the Baviaanskloof. Listen to Zinhle.";
+const DEFAULT_SHARE_URL = "https://zinhlecampaign.lovable.app/";
 
 export function ShareButtons() {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(DEFAULT_SHARE_URL);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    setUrl(window.location.href);
+    if (typeof window !== "undefined" && window.location?.href) {
+      setUrl(window.location.href);
+    }
   }, []);
 
-  const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-  const waHref = `https://wa.me/?text=${encodeURIComponent(`${SHARE_TEXT} ${url}`)}`;
+  const shareUrl = url || DEFAULT_SHARE_URL;
+  const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+  const waHref = `https://wa.me/?text=${encodeURIComponent(`${SHARE_TEXT} ${shareUrl}`)}`;
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

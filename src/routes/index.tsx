@@ -160,8 +160,11 @@ function HomePage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-8">
-              {/* TODO: update `raised` as funds come in. */}
-              <ProgressBar raised={0} target={250000} />
+              {/* Update `raised` manually as the BackaBuddy total moves. Only Back a Buddy contributions are reflected in this tracker. */}
+              <ProgressBar raised={5000} target={250000} />
+              <p className="mt-3 text-xs text-[color:var(--cream)]/55">
+                Tracker reflects Back a Buddy contributions only.
+              </p>
             </div>
           </Reveal>
           <Reveal delay={0.2}>
