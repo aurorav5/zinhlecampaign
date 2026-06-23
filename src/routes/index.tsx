@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
-import bankingQr from "@/assets/banking-qr.png";
 import { Reveal } from "@/components/site/Reveal";
-import { ProgressBar } from "@/components/site/ProgressBar";
+import { BackabuddyProgress } from "@/components/site/BackabuddyProgress";
+import { BridgeSupport } from "@/components/site/BridgeSupport";
 import { ShareButtons } from "@/components/site/ShareButtons";
 
 export const Route = createFileRoute("/")({
