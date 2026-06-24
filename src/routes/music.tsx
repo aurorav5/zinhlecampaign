@@ -74,7 +74,7 @@ function MusicPage() {
                 title="Blue Tick — Phil Bölke ft. Zinhle"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                fetchPriority="high"
+                {...({ fetchPriority: "high" } as any)}
                 loading="eager"
                 className="h-full w-full"
               />
