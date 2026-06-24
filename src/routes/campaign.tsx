@@ -22,23 +22,39 @@ export const Route = createFileRoute("/campaign")({
         content:
           "R250,000, joint-signatory account, going directly to Zinhle. Studio carried separately.",
       },
-      { property: "og:url", content: "https://zinhlecampaign.lovable.app/campaign" },
+      { property: "og:url", content: "/campaign" },
     ],
-    links: [{ rel: "canonical", href: "https://zinhlecampaign.lovable.app/campaign" }],
+    links: [{ rel: "canonical", href: "/campaign" }],
   }),
   component: CampaignPage,
 });
 
+const CAMPAIGN_JSON_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  "name": "She Sang to a Tortoise — Zinhle Artist Development Campaign",
+  "description": "R250,000 target. Joint-signatory account. Going directly to Zinhle. Nothing to ThatGuy Productions.",
+  "url": "https://www.backabuddy.co.za/campaign/she-sang-to-a-tortoise",
+  "recipient": { "@type": "Person", "name": "Zinhle" },
+  "agent": {
+    "@type": "Organization",
+    "name": "ThatGuy Productions International",
+    "@id": "https://zinhlecampaign.lovable.app/#organization"
+  }
+});
+
 function CampaignPage() {
   return (
-    <div className="bg-night px-5 pt-32 pb-24 md:pt-40">
-      <div className="mx-auto max-w-3xl">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Campaign</p>
-          <h1 className="mt-4 font-display text-4xl text-[color:var(--cream)] sm:text-5xl md:text-6xl">
-            There is a campaign.
-          </h1>
-        </Reveal>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: CAMPAIGN_JSON_LD }} />
+      <div className="bg-night px-5 pt-32 pb-24 md:pt-40">
+        <div className="mx-auto max-w-3xl">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Campaign</p>
+            <h1 className="mt-4 font-display text-4xl text-[color:var(--cream)] sm:text-5xl md:text-6xl">
+              Twelve months. R250,000. Directly to Zinhle.
+            </h1>
+          </Reveal>
 
         <Reveal delay={0.1}>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-[color:var(--cream)]/85">
