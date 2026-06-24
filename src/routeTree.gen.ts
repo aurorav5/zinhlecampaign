@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoryRouteImport } from './routes/story'
+import { Route as EpkRouteImport } from './routes/epk'
 import { Route as ShareRouteImport } from './routes/share'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as MusicRouteImport } from './routes/music'
