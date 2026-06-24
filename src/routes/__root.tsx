@@ -112,6 +112,36 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://zinhlecampaign.lovable.app/#organization",
+              "name": "ThatGuy Productions International",
+              "url": "https://zinhlecampaign.lovable.app",
+              "description": "Independent music production label founded by Phil Bölke, based in the Baviaanskloof, Eastern Cape, South Africa.",
+              "founder": {
+                "@type": "Person",
+                "name": "Phil Bölke",
+                "jobTitle": "Producer & Engineer",
+                "affiliation": "ThatGuy Productions International"
+              },
+              "sameAs": [
+                "https://www.facebook.com/ThatGuyOfficial",
+                "https://www.tiktok.com/@thatguy_productions",
+                "https://www.youtube.com/@ThatGuy-realest"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://zinhlecampaign.lovable.app/#website",
+              "url": "https://zinhlecampaign.lovable.app",
+              "name": "She Sang to a Tortoise",
+              "publisher": { "@id": "https://zinhlecampaign.lovable.app/#organization" }
+            }
+          ]
+        }) }} />
       </head>
       <body>
         {children}
