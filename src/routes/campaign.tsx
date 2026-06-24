@@ -96,7 +96,8 @@ function CampaignPage() {
             <BridgeSupport tone="dark" />
           </div>
         </Reveal>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
