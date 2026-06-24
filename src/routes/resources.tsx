@@ -5,13 +5,13 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/resources")({
   head: () => ({
     meta: [
-      { title: "Documentation — She Sang to a Tortoise" },
+      { title: "Transparency Documents — She Sang to a Tortoise" },
       {
         name: "description",
         content:
           "Signed Commitment Letter and Artist Development Agreement governing the Zinhle development project.",
       },
-      { property: "og:title", content: "Documentation — She Sang to a Tortoise" },
+      { property: "og:title", content: "Transparency Documents — She Sang to a Tortoise" },
       {
         property: "og:description",
         content: "Signed documents governing the Zinhle development project, published in full.",
@@ -43,9 +43,9 @@ function ResourcesPage() {
     <section className="bg-night px-5 pt-32 pb-24 md:pt-40">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">Resources</p>
+          <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">Transparency</p>
           <h1 className="mt-4 font-display text-4xl text-[color:var(--cream)] sm:text-5xl">
-            Documentation.
+            The Agreements — Signed &amp; Published
           </h1>
           <p className="mt-6 max-w-xl text-[color:var(--cream)]/80">
             For transparency, the signed Commitment Letter and Artist Development Agreement governing this

@@ -13,6 +13,7 @@ import { Route as StoryRouteImport } from './routes/story'
 import { Route as ShareRouteImport } from './routes/share'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as MusicRouteImport } from './routes/music'
+import { Route as EpkRouteImport } from './routes/epk'
 import { Route as CampaignRouteImport } from './routes/campaign'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
@@ -38,6 +39,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const MusicRoute = MusicRouteImport.update({
   id: '/music',
   path: '/music',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EpkRoute = EpkRouteImport.update({
+  id: '/epk',
+  path: '/epk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CampaignRoute = CampaignRouteImport.update({
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/campaign': typeof CampaignRoute
+  '/epk': typeof EpkRoute
   '/music': typeof MusicRoute
   '/resources': typeof ResourcesRoute
   '/share': typeof ShareRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/campaign': typeof CampaignRoute
+  '/epk': typeof EpkRoute
   '/music': typeof MusicRoute
   '/resources': typeof ResourcesRoute
   '/share': typeof ShareRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/campaign': typeof CampaignRoute
+  '/epk': typeof EpkRoute
   '/music': typeof MusicRoute
   '/resources': typeof ResourcesRoute
   '/share': typeof ShareRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/campaign'
+    | '/epk'
     | '/music'
     | '/resources'
     | '/share'
@@ -123,6 +133,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/campaign'
+    | '/epk'
     | '/music'
     | '/resources'
     | '/share'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/campaign'
+    | '/epk'
     | '/music'
     | '/resources'
     | '/share'
@@ -148,6 +160,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   CampaignRoute: typeof CampaignRoute
+  EpkRoute: typeof EpkRoute
   MusicRoute: typeof MusicRoute
   ResourcesRoute: typeof ResourcesRoute
   ShareRoute: typeof ShareRoute
@@ -182,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/music'
       fullPath: '/music'
       preLoaderRoute: typeof MusicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/epk': {
+      id: '/epk'
+      path: '/epk'
+      fullPath: '/epk'
+      preLoaderRoute: typeof EpkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/campaign': {
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   CampaignRoute: CampaignRoute,
+  EpkRoute: EpkRoute,
   MusicRoute: MusicRoute,
   ResourcesRoute: ResourcesRoute,
   ShareRoute: ShareRoute,

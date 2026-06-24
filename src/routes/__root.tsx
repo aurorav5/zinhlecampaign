@@ -90,14 +90,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#08080a" },
       { property: "og:title", content: "She Sang to a Tortoise — ThatGuy Productions International" },
       { name: "twitter:title", content: "She Sang to a Tortoise — ThatGuy Productions International" },
-      { name: "description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
-      { property: "og:description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
-      { name: "twitter:description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9a05354c-e9f7-4a2c-9e57-2994448e21a2/id-preview-0d890dab--c117b7a9-5ecc-4c09-a2f5-2bcdcf52f917.lovable.app-1782155860066.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9a05354c-e9f7-4a2c-9e57-2994448e21a2/id-preview-0d890dab--c117b7a9-5ecc-4c09-a2f5-2bcdcf52f917.lovable.app-1782155860066.png" },
+      { property: "og:description", content: "A true story from the Baviaanskloof, Eastern Cape — and a campaign to give a 19-year-old voice the financial footing she needs." },
+      { name: "twitter:description", content: "A true story from the Baviaanskloof — and a campaign to give a 19-year-old voice the financial footing she needs." },
+      { name: "google-site-verification", content: "REPLACE_WITH_GSC_VERIFICATION_CODE" },
+      { property: "og:image", content: "https://zinhlecampaign.lovable.app/og-image.jpg" },
+      { name: "twitter:image", content: "https://zinhlecampaign.lovable.app/og-image.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "preload", as: "image", href: "/og-image.jpg" },
     ],
   }),
   shellComponent: RootShell,
@@ -111,6 +112,36 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://zinhlecampaign.lovable.app/#organization",
+              "name": "ThatGuy Productions International",
+              "url": "https://zinhlecampaign.lovable.app",
+              "description": "Independent music production label founded by Phil Bölke, based in the Baviaanskloof, Eastern Cape, South Africa.",
+              "founder": {
+                "@type": "Person",
+                "name": "Phil Bölke",
+                "jobTitle": "Producer & Engineer",
+                "affiliation": "ThatGuy Productions International"
+              },
+              "sameAs": [
+                "https://www.facebook.com/ThatGuyOfficial",
+                "https://www.tiktok.com/@thatguy_productions",
+                "https://www.youtube.com/@ThatGuy-realest"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://zinhlecampaign.lovable.app/#website",
+              "url": "https://zinhlecampaign.lovable.app",
+              "name": "She Sang to a Tortoise",
+              "publisher": { "@id": "https://zinhlecampaign.lovable.app/#organization" }
+            }
+          ]
+        }) }} />
       </head>
       <body>
         {children}
