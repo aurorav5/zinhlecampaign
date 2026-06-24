@@ -26,11 +26,6 @@ const StoryRoute = StoryRouteImport.update({
   path: '/story',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EpkRoute = EpkRouteImport.update({
-  id: '/epk',
-  path: '/epk',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ShareRoute = ShareRouteImport.update({
   id: '/share',
   path: '/share',
