@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { BackabuddyProgress } from "@/components/site/BackabuddyProgress";
 import { BridgeSupport } from "@/components/site/BridgeSupport";
+import { getBackabuddyStats } from "@/lib/backabuddy.functions";
 
 const BACKABUDDY_URL =
   "https://www.backabuddy.co.za/campaign/she-sang-to-a-tortoise";
@@ -26,6 +27,13 @@ export const Route = createFileRoute("/campaign")({
     ],
     links: [{ rel: "canonical", href: "/campaign" }],
   }),
+  loader: async () => {
+    try {
+      return { backabuddyStats: await getBackabuddyStats() };
+    } catch {
+      return { backabuddyStats: undefined };
+    }
+  },
   component: CampaignPage,
 });
 
@@ -44,6 +52,7 @@ const CAMPAIGN_JSON_LD = JSON.stringify({
 });
 
 function CampaignPage() {
+  const { backabuddyStats } = Route.useLoaderData();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: CAMPAIGN_JSON_LD }} />
@@ -76,7 +85,7 @@ function CampaignPage() {
 
         <Reveal delay={0.2}>
           <div className="mt-12 rounded-2xl border border-[color:var(--gold)]/30 bg-[color:var(--ink)]/70 p-8 md:p-10">
-            <BackabuddyProgress tone="dark" />
+            <BackabuddyProgress tone="dark" initialStats={backabuddyStats} />
             <p className="mt-3 text-xs text-[color:var(--cream)]/55">
               Tracker reflects Back a Buddy contributions only. Direct bank transfers below are recorded separately.
             </p>
