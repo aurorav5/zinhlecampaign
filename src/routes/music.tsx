@@ -56,7 +56,7 @@ const MUSIC_JSON_LD = JSON.stringify([
     "byArtist": { "@type": "Person", "name": "Zinhle" },
     "producer": { "@type": "Person", "name": "Phil Bölke" },
     "recordLabel": { "@type": "Organization", "name": "ThatGuy Productions International" },
-    "audio": "https://zinhlecampaign.lovable.app" + ${JSON.stringify(foreverYouAsset.url)},
+    "audio": foreverYouAsset.url,
     "description": "Studio recording from the Baviaanskloof sessions."
   }
 ]);
