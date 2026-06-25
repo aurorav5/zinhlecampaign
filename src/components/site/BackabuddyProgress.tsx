@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ProgressBar } from "./ProgressBar";
-import { getBackabuddyStats } from "@/lib/backabuddy.functions";
+import { getBackabuddyStats, type BackabuddyStats } from "@/lib/backabuddy.functions";
 
 const FALLBACK_TARGET = 250000;
 
@@ -16,19 +16,21 @@ function relativeTime(iso: string): string {
   return `${Math.floor(hr / 24)} d ago`;
 }
 
-type Props = { tone?: "dark" | "light" };
+type Props = { tone?: "dark" | "light"; initialStats?: BackabuddyStats };
 
-export function BackabuddyProgress({ tone = "dark" }: Props) {
+export function BackabuddyProgress({ tone = "dark", initialStats }: Props) {
   const fetcher = useServerFn(getBackabuddyStats);
   const { data, isLoading } = useQuery({
     queryKey: ["backabuddy", "stats"],
     queryFn: () => fetcher(),
     staleTime: 60_000,
     refetchOnWindowFocus: false,
+    initialData: initialStats,
   });
 
-  const raised = data?.raised ?? 0;
-  const target = data?.target ?? FALLBACK_TARGET;
+  const raised = data?.raised ?? initialStats?.raised ?? 0;
+  const target = data?.target ?? initialStats?.target ?? FALLBACK_TARGET;
+  const stats = data ?? initialStats;
 
   const subtleClass =
     tone === "light"
@@ -39,15 +41,15 @@ export function BackabuddyProgress({ tone = "dark" }: Props) {
     <div>
       <ProgressBar raised={raised} target={target} />
       <p className={`mt-2 text-xs ${subtleClass}`}>
-        {isLoading
-          ? "Fetching live total from Back a Buddy…"
-          : data
-            ? <>
-                Live from Back a Buddy
-                {data.donors > 0 ? ` · ${data.donors} supporter${data.donors === 1 ? "" : "s"}` : ""}
-                {" · "}updated {relativeTime(data.fetchedAt)}
-                {data.source === "fallback" ? " (cached)" : ""}
-              </>
+        {stats
+          ? <>
+              Live from Back a Buddy
+              {stats.donors > 0 ? ` · ${stats.donors} supporter${stats.donors === 1 ? "" : "s"}` : ""}
+              {" · "}updated {relativeTime(stats.fetchedAt)}
+              {stats.source === "fallback" ? " (cached)" : ""}
+            </>
+          : isLoading
+            ? "Fetching live total from Back a Buddy…"
             : "Could not reach Back a Buddy — showing last known value."}
       </p>
     </div>
