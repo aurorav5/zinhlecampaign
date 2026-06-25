@@ -1,12 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { BookOpen, Music2, Heart, Share2 } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
 import { Reveal } from "@/components/site/Reveal";
-import { BackabuddyProgress } from "@/components/site/BackabuddyProgress";
-import { BridgeSupport } from "@/components/site/BridgeSupport";
-import { ShareButtons } from "@/components/site/ShareButtons";
-
 import { getBackabuddyStats } from "@/lib/backabuddy.functions";
+import type { BackabuddyStats } from "@/lib/backabuddy.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,175 +36,140 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+function formatRand(n: number): string {
+  return "R\u00a0" + n.toLocaleString("en-ZA");
+}
+
 function HomePage() {
   const { backabuddyStats } = Route.useLoaderData();
+
+  const raised = backabuddyStats?.raised ?? 0;
+  const target = backabuddyStats?.target ?? 250000;
+  const pct = target > 0 ? Math.round((raised / target) * 1000) / 10 : 0;
+
+  const campaignSub =
+    raised > 0
+      ? `${formatRand(raised)} raised · ${pct}%`
+      : `${formatRand(target)} target`;
+
   return (
-    <>
-      {/* HERO */}
-      <section className="relative h-dvh min-h-[640px] w-full overflow-hidden">
-        <img
-          src={heroDuet}
-          alt="Phil Bölke and Zinhle at twin microphones in the studio"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.05) 28%, rgba(8,8,10,0.15) 55%, rgba(4,29,63,0.85) 88%, var(--ink) 100%)",
-          }}
-        />
-        <div className="relative z-10 flex h-full flex-col items-center justify-end px-5 pb-24 text-center md:pb-32">
+    <div className="relative h-dvh min-h-[600px] w-full overflow-hidden">
+      {/* Background image */}
+      <img
+        src={heroDuet}
+        alt="Phil Bölke and Zinhle at twin microphones in the studio"
+        className="absolute inset-0 h-full w-full object-cover"
+        fetchPriority="high"
+      />
+
+      {/* Gradient overlay — heavy at top for logo/nav, heaviest at bottom for cards */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(8,8,10,0.72) 0%, rgba(8,8,10,0.18) 35%, rgba(8,8,10,0.42) 58%, rgba(4,19,50,0.93) 82%, rgba(4,14,40,0.98) 100%)",
+        }}
+      />
+
+      {/* Main layout — flex column, title top-centre, cards pinned to bottom */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-between px-4 pb-6 pt-28 md:pb-8 md:pt-32">
+
+        {/* Title block */}
+        <div className="mx-auto w-full max-w-3xl text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-[color:var(--gold)] sm:text-xs">
               ThatGuy Productions International
             </p>
           </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="mt-5 max-w-4xl font-display text-4xl leading-[1.05] text-[color:var(--cream)] sm:text-5xl md:text-6xl lg:text-7xl">
+          <Reveal delay={0.08}>
+            <h1 className="mt-4 font-display text-3xl leading-[1.08] text-[color:var(--cream)] sm:text-4xl md:text-5xl lg:text-6xl">
               She Sang to a Tortoise
-              <span className="block text-[color:var(--cream)]/80">— And Didn't Know I Was There</span>
+              <span className="block text-[color:var(--cream)]/75">
+                — And Didn't Know I Was There
+              </span>
             </h1>
           </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-6 max-w-xl text-base text-[color:var(--cream)]/80 sm:text-lg">
+          <Reveal delay={0.16}>
+            <p className="mt-3 text-sm text-[color:var(--cream)]/65 sm:text-base">
               A true story from the Baviaanskloof, Eastern Cape.
             </p>
           </Reveal>
-          <Reveal delay={0.35}>
-            <a
-              href="#story"
-              className="mt-12 inline-flex flex-col items-center gap-2 text-[color:var(--gold)] hover:opacity-80"
-              aria-label="Scroll to story"
-            >
-              <span className="text-xs uppercase tracking-[0.3em]">Read on</span>
-              <ChevronDown className="h-5 w-5 animate-bounce" />
-            </a>
-          </Reveal>
         </div>
-      </section>
 
-      {/* STORY TEASER */}
-      <section id="story" className="bg-[color:var(--offwhite)] px-5 py-24 md:py-32 text-[color:var(--ink)]">
-        <div className="mx-auto max-w-2xl">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Story</p>
-            <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl">
-              There's a dirt road in the Baviaanskloof.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-8 font-body text-lg leading-relaxed text-[color:var(--ink)]/85">
-              There's a dirt road in the Baviaanskloof, Eastern Cape, that most people will never drive.
-              It cuts through one of the most remote, most beautiful valleys in South Africa — a place
-              where the mountain meets the sky and time moves differently.
-            </p>
-            <p className="mt-6 font-body text-lg leading-relaxed text-[color:var(--ink)]/85">
-              I was driving home on that road when I found a massive old tortoise planted square in the
-              middle of it. I stopped, got out, and moved it. And then I heard her — a young woman, walking
-              the road, singing to herself. Not performing. Just singing the way you only do when you are
-              completely alone and completely free.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Link
-              to="/story"
-              className="mt-10 inline-flex items-center gap-2 font-display text-lg text-[color:var(--ink)] gold-underline hover:text-[color:var(--ink)]"
-            >
-              Read the full story <ArrowRight className="h-5 w-5 text-[color:var(--gold)]" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* MUSIC TEASER */}
-      <section className="bg-night px-5 py-24 md:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Music</p>
-            <h2 className="mt-4 font-display text-3xl text-[color:var(--cream)] sm:text-4xl md:text-5xl">
-              Her voice stopped everyone who heard it.
-            </h2>
-            <p className="mt-6 max-w-md text-[color:var(--cream)]/80">
-              Blue Tick — recorded in the Baviaanskloof, with Zinhle on vocals. Her own mother heard it for
-              the first time on Father's Day and couldn't hold herself together.
-            </p>
-            <Link
-              to="/music"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--gold)] px-6 py-3 text-sm font-medium text-[color:var(--ink)] shadow-glow-gold transition-transform hover:-translate-y-0.5"
-            >
-              Listen now <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="aspect-video w-full overflow-hidden rounded-xl border border-[color:var(--gold)]/20 shadow-glow-gold">
-              <iframe
-                src="https://www.youtube.com/embed/nrwV-a9cS3Y"
-                title="Blue Tick — Phil Bölke ft. Zinhle"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
+        {/* Clickthrough card grid */}
+        <Reveal delay={0.28}>
+          <div className="mx-auto w-full max-w-4xl">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4">
+              <NavCard
+                to="/story"
+                icon={<BookOpen className="h-5 w-5" />}
+                label="The Story"
+                sub="How it all started"
+              />
+              <NavCard
+                to="/music"
+                icon={<Music2 className="h-5 w-5" />}
+                label="The Music"
+                sub="2 videos · studio recording"
+              />
+              <NavCard
+                to="/campaign"
+                icon={<Heart className="h-5 w-5" />}
+                label="The Campaign"
+                sub={campaignSub}
+                highlight
+              />
+              <NavCard
+                to="/share"
+                icon={<Share2 className="h-5 w-5" />}
+                label="Share"
+                sub="It costs nothing"
               />
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
 
-      {/* CAMPAIGN TEASER */}
-      <section className="px-5 py-24 md:py-32" style={{ background: "var(--ink)" }}>
-        <div className="mx-auto max-w-3xl rounded-2xl border border-[color:var(--gold)]/25 bg-[color:var(--ink)]/60 p-8 md:p-12">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Campaign</p>
-            <h2 className="mt-4 font-display text-3xl text-[color:var(--cream)] sm:text-4xl">
-              Twelve months of genuine independence.
-            </h2>
-            <p className="mt-6 text-[color:var(--cream)]/80">
-              R250,000, ring-fenced in a joint-signatory account, going directly to Zinhle — travel, living
-              costs, and a marketing fund for when her debut album is ready. Nothing to ThatGuy Productions.
-              Phil carries the studio side himself.
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="mt-8">
-              <BackabuddyProgress tone="dark" initialStats={backabuddyStats} />
-              <p className="mt-3 text-xs text-[color:var(--cream)]/55">
-                Tracker reflects Back a Buddy contributions only.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Link
-              to="/campaign"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--gold)] px-6 py-3 text-sm font-medium text-[color:var(--ink)] shadow-glow-gold hover:-translate-y-0.5 transition-transform"
-            >
-              Support the campaign <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+type NavCardProps = {
+  to: string;
+  icon: React.ReactNode;
+  label: string;
+  sub: string;
+  highlight?: boolean;
+};
 
-      {/* BRIDGE / INTERIM SUPPORT */}
-      <section className="border-t border-[color:var(--gold)]/20 bg-[color:var(--offwhite)] px-5 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <BridgeSupport tone="light" />
-        </div>
-      </section>
-
-      {/* SHARE */}
-      <section className="px-5 pb-24 pt-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <h2 className="font-display text-2xl text-[color:var(--cream)] sm:text-3xl">
-              The right person seeing this costs nothing.
-            </h2>
-            <p className="mt-3 text-sm text-[color:var(--cream)]/70">Share it.</p>
-            <div className="mt-6 flex justify-center">
-              <ShareButtons />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-    </>
+function NavCard({ to, icon, label, sub, highlight = false }: NavCardProps) {
+  return (
+    <Link
+      to={to}
+      className={[
+        "group flex flex-col gap-2 rounded-2xl border px-4 py-5 transition-all duration-200",
+        "hover:-translate-y-1 hover:shadow-glow-gold active:scale-[0.98]",
+        "md:px-6 md:py-6",
+        highlight
+          ? "border-[color:var(--gold)]/55 bg-[color:var(--gold)]/12 hover:bg-[color:var(--gold)]/22"
+          : "border-white/12 bg-[color:var(--ink)]/55 hover:border-[color:var(--gold)]/35 hover:bg-[color:var(--ink)]/75",
+      ].join(" ")}
+    >
+      <span
+        className={
+          highlight
+            ? "text-[color:var(--gold)]"
+            : "text-[color:var(--gold)]/70 group-hover:text-[color:var(--gold)]"
+        }
+      >
+        {icon}
+      </span>
+      <span className="font-display text-base text-[color:var(--cream)] sm:text-lg md:text-xl">
+        {label}
+      </span>
+      <span className="text-[11px] leading-snug text-[color:var(--cream)]/50 sm:text-xs">
+        {sub}
+      </span>
+    </Link>
   );
 }
