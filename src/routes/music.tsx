@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Youtube } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import foreverYouAsset from "@/assets/forever-you-zinhle.mp3.asset.json";
 
 export const Route = createFileRoute("/music")({
   head: () => ({
@@ -47,6 +48,16 @@ const MUSIC_JSON_LD = JSON.stringify([
     "recordLabel": { "@type": "Organization", "name": "ThatGuy Productions International" },
     "url": "https://www.youtube.com/watch?v=mKPz5mcQ0rA",
     "description": "Recorded in the Baviaanskloof, Eastern Cape."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    "name": "Forever You",
+    "byArtist": { "@type": "Person", "name": "Zinhle" },
+    "producer": { "@type": "Person", "name": "Phil Bölke" },
+    "recordLabel": { "@type": "Organization", "name": "ThatGuy Productions International" },
+    "audio": "https://zinhlecampaign.lovable.app" + ${JSON.stringify(foreverYouAsset.url)},
+    "description": "Studio recording from the Baviaanskloof sessions."
   }
 ]);
 
