@@ -27,7 +27,13 @@ export const Route = createFileRoute("/campaign")({
     ],
     links: [{ rel: "canonical", href: "/campaign" }],
   }),
-  loader: async () => ({ backabuddyStats: await getBackabuddyStats() }),
+  loader: async () => {
+    try {
+      return { backabuddyStats: await getBackabuddyStats() };
+    } catch {
+      return { backabuddyStats: undefined };
+    }
+  },
   component: CampaignPage,
 });
 

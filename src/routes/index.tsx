@@ -29,7 +29,13 @@ export const Route = createFileRoute("/")({
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
-  loader: async () => ({ backabuddyStats: await getBackabuddyStats() }),
+  loader: async () => {
+    try {
+      return { backabuddyStats: await getBackabuddyStats() };
+    } catch {
+      return { backabuddyStats: undefined };
+    }
+  },
   component: HomePage,
 });
 
