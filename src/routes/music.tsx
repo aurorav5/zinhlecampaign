@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Youtube } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import foreverYouAsset from "@/assets/forever-you-zinhle.mp3.asset.json";
 
 export const Route = createFileRoute("/music")({
   head: () => ({
@@ -47,6 +48,16 @@ const MUSIC_JSON_LD = JSON.stringify([
     "recordLabel": { "@type": "Organization", "name": "ThatGuy Productions International" },
     "url": "https://www.youtube.com/watch?v=mKPz5mcQ0rA",
     "description": "Recorded in the Baviaanskloof, Eastern Cape."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    "name": "Forever You",
+    "byArtist": { "@type": "Person", "name": "Zinhle" },
+    "producer": { "@type": "Person", "name": "Phil Bölke" },
+    "recordLabel": { "@type": "Organization", "name": "ThatGuy Productions International" },
+    "audio": foreverYouAsset.url,
+    "description": "Studio recording from the Baviaanskloof sessions."
   }
 ]);
 
@@ -138,6 +149,34 @@ function MusicPage() {
             <p className="mt-10 text-sm text-[color:var(--cream)]/60">
               Who I Am · Zinhle · Produced, mixed and mastered at ThatGuy Productions International.
             </p>
+          </Reveal>
+
+          <Reveal delay={0.65}>
+            <div className="mx-auto mt-24 border-t border-[color:var(--gold)]/20 pt-20">
+              <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">Studio recording</p>
+              <h2 className="mt-4 font-display text-3xl text-[color:var(--cream)] sm:text-4xl">
+                Forever You — Zinhle
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base text-[color:var(--cream)]/80 sm:text-lg">
+                A studio recording from the Baviaanskloof sessions. Press play.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.7}>
+            <div className="mx-auto mt-10 w-full max-w-2xl rounded-xl border border-[color:var(--gold)]/25 bg-[color:var(--cream)]/5 p-6 shadow-glow-gold">
+              <audio
+                controls
+                preload="none"
+                src={foreverYouAsset.url}
+                className="w-full"
+              >
+                Your browser does not support the audio element.
+              </audio>
+              <p className="mt-4 text-xs text-[color:var(--cream)]/60">
+                Forever You · Zinhle · Produced, mixed and mastered at ThatGuy Productions International.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
