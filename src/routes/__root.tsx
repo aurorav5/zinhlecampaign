@@ -90,12 +90,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#08080a" },
       { property: "og:title", content: "She Sang to a Tortoise — ThatGuy Productions International" },
       { name: "twitter:title", content: "She Sang to a Tortoise — ThatGuy Productions International" },
-      { property: "og:description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
-      { name: "twitter:description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
+      { property: "og:description", content: "The scars are still part of the story.
+
+They just aren't writing it anymore.
+
+The most beautiful \"FU\" is not anger but becoming everything you never dreamed" },
+      { name: "twitter:description", content: "The scars are still part of the story.
+
+They just aren't writing it anymore.
+
+The most beautiful \"FU\" is not anger but becoming everything you never dreamed" },
       { name: "google-site-verification", content: "REPLACE_WITH_GSC_VERIFICATION_CODE" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/XMy4rKFe1yVLytNd2i676mKKbCu1/social-images/social-1782336780861-Convert_Image_to_PNG.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/XMy4rKFe1yVLytNd2i676mKKbCu1/social-images/social-1782336780861-Convert_Image_to_PNG.webp" },
-      { name: "description", content: "Project Harmonize builds a professional, multi-page website for a music campaign, featuring artist bios, music, and campaign details." },
+      { name: "description", content: "The scars are still part of the story.
+
+They just aren't writing it anymore.
+
+The most beautiful \"FU\" is not anger but becoming everything you never dreamed" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
