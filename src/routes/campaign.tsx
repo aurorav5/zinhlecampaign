@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { BackabuddyProgress } from "@/components/site/BackabuddyProgress";
 import { BridgeSupport } from "@/components/site/BridgeSupport";
+import { getBackabuddyStats } from "@/lib/backabuddy.functions";
 
 const BACKABUDDY_URL =
   "https://www.backabuddy.co.za/campaign/she-sang-to-a-tortoise";
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/campaign")({
     ],
     links: [{ rel: "canonical", href: "/campaign" }],
   }),
+  loader: async () => ({ backabuddyStats: await getBackabuddyStats() }),
   component: CampaignPage,
 });
 
@@ -44,6 +46,7 @@ const CAMPAIGN_JSON_LD = JSON.stringify({
 });
 
 function CampaignPage() {
+  const { backabuddyStats } = Route.useLoaderData();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: CAMPAIGN_JSON_LD }} />

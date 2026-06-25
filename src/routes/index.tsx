@@ -6,6 +6,8 @@ import { BackabuddyProgress } from "@/components/site/BackabuddyProgress";
 import { BridgeSupport } from "@/components/site/BridgeSupport";
 import { ShareButtons } from "@/components/site/ShareButtons";
 
+import { getBackabuddyStats } from "@/lib/backabuddy.functions";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -27,10 +29,12 @@ export const Route = createFileRoute("/")({
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
+  loader: async () => ({ backabuddyStats: await getBackabuddyStats() }),
   component: HomePage,
 });
 
 function HomePage() {
+  const { backabuddyStats } = Route.useLoaderData();
   return (
     <>
       {/* HERO */}
@@ -160,7 +164,7 @@ function HomePage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-8">
-              <BackabuddyProgress tone="dark" />
+              <BackabuddyProgress tone="dark" initialStats={backabuddyStats} />
               <p className="mt-3 text-xs text-[color:var(--cream)]/55">
                 Tracker reflects Back a Buddy contributions only.
               </p>
