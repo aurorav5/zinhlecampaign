@@ -110,40 +110,42 @@ async function writeCache(stats: BackabuddyStats): Promise<void> {
   }
 }
 
-export const getBackabuddyStats = createServerFn({ method: "GET" }).handler(
-  async (): Promise<BackabuddyStats> => {
-    // 1. Serve fresh cache if available
-    const cached = await readCache();
-    if (cached && cached.source === "cache") return cached;
+export async function fetchBackabuddyStats(): Promise<BackabuddyStats> {
+  // 1. Serve fresh cache if available
+  const cached = await readCache();
+  if (cached && cached.source === "cache") return cached;
 
-    // 2. Try a fresh scrape
-    try {
-      const res = await fetch(CAMPAIGN_URL, {
-        headers: {
-          "user-agent":
-            "Mozilla/5.0 (compatible; ZinhleCampaignBot/1.0; +https://zinhlecampaign.lovable.app)",
-          accept: "text/html",
-        },
-      });
-      if (res.ok) {
-        const html = await res.text();
-        const parsed = parsePreloadedState(html) ?? parseDom(html);
-        if (parsed && parsed.target > 0) {
-          const stats: BackabuddyStats = {
-            ...parsed,
-            fetchedAt: new Date().toISOString(),
-            source: "live",
-          };
-          await writeCache(stats);
-          return stats;
-        }
+  // 2. Try a fresh scrape
+  try {
+    const res = await fetch(CAMPAIGN_URL, {
+      headers: {
+        "user-agent":
+          "Mozilla/5.0 (compatible; ZinhleCampaignBot/1.0; +https://zinhlecampaign.lovable.app)",
+        accept: "text/html",
+      },
+    });
+    if (res.ok) {
+      const html = await res.text();
+      const parsed = parsePreloadedState(html) ?? parseDom(html);
+      if (parsed && parsed.target > 0) {
+        const stats: BackabuddyStats = {
+          ...parsed,
+          fetchedAt: new Date().toISOString(),
+          source: "live",
+        };
+        await writeCache(stats);
+        return stats;
       }
-    } catch {
-      /* fall through to stale cache or fallback */
     }
+  } catch {
+    /* fall through to stale cache or fallback */
+  }
 
-    // 3. Fall back to stale cache, then hard fallback
-    if (cached) return cached;
-    return FALLBACK;
-  },
+  // 3. Fall back to stale cache, then hard fallback
+  if (cached) return cached;
+  return FALLBACK;
+}
+
+export const getBackabuddyStats = createServerFn({ method: "GET" }).handler(
+  async (): Promise<BackabuddyStats> => fetchBackabuddyStats(),
 );
