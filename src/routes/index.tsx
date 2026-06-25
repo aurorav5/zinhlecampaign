@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Music2, Heart, Share2 } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
 import { Reveal } from "@/components/site/Reveal";
+import { HeroAudioPlayer } from "@/components/site/HeroAudioPlayer";
 import { getBackabuddyStats } from "@/lib/backabuddy.functions";
 import type { BackabuddyStats } from "@/lib/backabuddy.functions";
 
@@ -54,6 +55,8 @@ function HomePage() {
 
   return (
     <div className="relative h-dvh min-h-[600px] w-full overflow-hidden">
+      <HeroAudioPlayer src="/audio/who-i-am.mp3" title="Who I Am" />
+
       {/* Background image */}
       <img
         src={heroDuet}
