@@ -43,7 +43,7 @@ function formatRand(n: number): string {
 }
 
 function HomePage() {
-  const { backabuddyStats } = Route.useLoaderData();
+  const { backabuddyStats, combinedTotals } = Route.useLoaderData();
 
   const raised = backabuddyStats?.raised ?? 0;
   const target = backabuddyStats?.target ?? 250000;
