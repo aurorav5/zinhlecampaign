@@ -194,7 +194,7 @@ function EpkPage() {
                   <strong className="text-[color:var(--ink)]">Phil Bölke</strong> (PhD Eng, MEng, BEng — North-West University, Potchefstroom) is the founder and CEO of ARCOVEL Technologies International and the owner and executive producer of ThatGuy Productions International. He is an NRF-rated researcher with active PCT patent filings in quantum-mechanical systems engineering.
                 </p>
                 <p>
-                  ThatGuy Productions International operates as a fully integrated studio facility built into the Baviaanskloof, Eastern Cape. It handles recording, mixing, mastering, and distribution, and has produced and released multiple Afrikaans titles under RouteNote distribution including Phil Bölke's own debut album <em>Dankie Vir Die Hande</em> (released May 30, 2026), which includes <em>Hulle Weet Nie Wat Ons Weet</em> — the official SARU-licensed Afrikaans Springbok anthem confirmed on SuperSport and SABC from June 2026.
+                  ThatGuy Productions International operates as a fully integrated studio facility built into the Baviaanskloof, Eastern Cape. It handles recording, mixing, mastering, and distribution, and has produced and released multiple Afrikaans titles under RouteNote distribution including Phil Bölke's own debut album <em>Dankie Vir Die Hande</em> (released May 30, 2026), which includes <em>Hulle Weet Nie Wat Ons Weet</em>.
                 </p>
               </div>
             </Reveal>
@@ -238,7 +238,6 @@ function EpkPage() {
               </div>
               <div className="space-y-3 text-[color:var(--cream)]/80">
                 <p className="text-lg"><strong className="text-[color:var(--cream)]">Label</strong> — ThatGuy Productions International</p>
-                <p className="text-lg"><strong className="text-[color:var(--cream)]">Sync & Legal</strong> — Russell Bagnall, Adams & Adams (South Africa)</p>
                 <p className="text-sm text-[color:var(--cream)]/55 mt-6">For general press inquiries, use the contact details provided by your industry liaison or reach ThatGuy Productions via social channels listed below.</p>
               </div>
             </Reveal>
