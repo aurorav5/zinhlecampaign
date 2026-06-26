@@ -19,32 +19,36 @@ Behavior:
 - Never request, store, or echo donation card numbers or personal financial info.
 - Use plain markdown. No emojis unless the user uses them first.`;
 
-export const ServerRoute = createFileRoute("/api/chat").methods({
-  POST: async ({ request }) => {
-    const apiKey = process.env.LOVABLE_API_KEY;
-    if (!apiKey) {
-      return new Response("Missing LOVABLE_API_KEY", { status: 500 });
-    }
+export const Route = createFileRoute("/api/chat")({
+  server: {
+    handlers: {
+      POST: async ({ request }) => {
+        const apiKey = process.env.LOVABLE_API_KEY;
+        if (!apiKey) {
+          return new Response("Missing LOVABLE_API_KEY", { status: 500 });
+        }
 
-    let body: { messages?: UIMessage[] };
-    try {
-      body = await request.json();
-    } catch {
-      return new Response("Invalid JSON", { status: 400 });
-    }
-    const messages = body.messages ?? [];
+        let body: { messages?: UIMessage[] };
+        try {
+          body = await request.json();
+        } catch {
+          return new Response("Invalid JSON", { status: 400 });
+        }
+        const messages = body.messages ?? [];
 
-    try {
-      const gateway = createLovableAiGatewayProvider(apiKey);
-      const result = streamText({
-        model: gateway("google/gemini-3-flash-preview"),
-        system: SYSTEM_PROMPT,
-        messages: convertToModelMessages(messages),
-      });
-      return result.toUIMessageStreamResponse();
-    } catch (err) {
-      console.error("[api/chat] stream error", err);
-      return new Response("AI request failed", { status: 500 });
-    }
+        try {
+          const gateway = createLovableAiGatewayProvider(apiKey);
+          const result = streamText({
+            model: gateway("google/gemini-3-flash-preview"),
+            system: SYSTEM_PROMPT,
+            messages: convertToModelMessages(messages),
+          });
+          return result.toUIMessageStreamResponse();
+        } catch (err) {
+          console.error("[api/chat] stream error", err);
+          return new Response("AI request failed", { status: 500 });
+        }
+      },
+    },
   },
 });
