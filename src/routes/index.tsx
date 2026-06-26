@@ -3,8 +3,9 @@ import { BookOpen, Music2, Heart, Share2 } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroVideoPlayer } from "@/components/site/HeroVideoPlayer";
+import { HeroPlayCta } from "@/components/site/HeroPlayCta";
 import { getBackabuddyStats } from "@/lib/backabuddy.functions";
-import type { BackabuddyStats } from "@/lib/backabuddy.functions";
+import { fetchCombinedTotals } from "@/lib/totals.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,11 +29,11 @@ export const Route = createFileRoute("/")({
     links: [{ rel: "canonical", href: "/" }],
   }),
   loader: async () => {
-    try {
-      return { backabuddyStats: await getBackabuddyStats() };
-    } catch {
-      return { backabuddyStats: undefined };
-    }
+    const [backabuddyStats, combinedTotals] = await Promise.all([
+      getBackabuddyStats().catch(() => undefined),
+      fetchCombinedTotals().catch(() => undefined),
+    ]);
+    return { backabuddyStats, combinedTotals };
   },
   component: HomePage,
 });
@@ -42,7 +43,7 @@ function formatRand(n: number): string {
 }
 
 function HomePage() {
-  const { backabuddyStats } = Route.useLoaderData();
+  const { backabuddyStats, combinedTotals } = Route.useLoaderData();
 
   const raised = backabuddyStats?.raised ?? 0;
   const target = backabuddyStats?.target ?? 250000;
@@ -56,6 +57,7 @@ function HomePage() {
   return (
     <div className="relative h-dvh min-h-[600px] w-full overflow-hidden">
       <HeroVideoPlayer videoId="mKPz5mcQ0rA" title="Who I Am" />
+      <HeroPlayCta initial={combinedTotals} />
 
       {/* Background image */}
       <img
