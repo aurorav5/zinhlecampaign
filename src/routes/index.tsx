@@ -57,6 +57,7 @@ function HomePage() {
   return (
     <div className="relative h-dvh min-h-[600px] w-full overflow-hidden">
       <HeroVideoPlayer videoId="mKPz5mcQ0rA" title="Who I Am" />
+      <HeroPlayCta initial={combinedTotals} />
 
       {/* Background image */}
       <img
