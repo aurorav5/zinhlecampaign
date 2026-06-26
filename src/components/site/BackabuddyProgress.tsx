@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ProgressBar } from "./ProgressBar";
-import { getBackabuddyStats, type BackabuddyStats } from "@/lib/backabuddy.functions";
+import { getCombinedFundingStats, type CombinedFundingStats } from "@/lib/funding-totals.functions";
 
 const FALLBACK_TARGET = 250000;
 
@@ -16,19 +16,19 @@ function relativeTime(iso: string): string {
   return `${Math.floor(hr / 24)} d ago`;
 }
 
-type Props = { tone?: "dark" | "light"; initialStats?: BackabuddyStats };
+type Props = { tone?: "dark" | "light"; initialStats?: CombinedFundingStats };
 
 export function BackabuddyProgress({ tone = "dark", initialStats }: Props) {
-  const fetcher = useServerFn(getBackabuddyStats);
+  const fetcher = useServerFn(getCombinedFundingStats);
   const { data, isLoading } = useQuery({
-    queryKey: ["backabuddy", "stats"],
+    queryKey: ["funding", "combined"],
     queryFn: () => fetcher(),
     staleTime: 60_000,
     refetchOnWindowFocus: false,
     initialData: initialStats,
   });
 
-  const raised = data?.raised ?? initialStats?.raised ?? 0;
+  const raised = data?.totalRaised ?? initialStats?.totalRaised ?? 0;
   const target = data?.target ?? initialStats?.target ?? FALLBACK_TARGET;
   const stats = data ?? initialStats;
 
@@ -43,13 +43,13 @@ export function BackabuddyProgress({ tone = "dark", initialStats }: Props) {
       <p className={`mt-2 text-xs ${subtleClass}`}>
         {stats
           ? <>
-              Live from Back a Buddy
-              {stats.donors > 0 ? ` · ${stats.donors} supporter${stats.donors === 1 ? "" : "s"}` : ""}
+              Back a Buddy + verified EFT
+              {stats.babDonors > 0 ? ` · ${stats.babDonors} BAB supporter${stats.babDonors === 1 ? "" : "s"}` : ""}
               {" · "}updated {relativeTime(stats.fetchedAt)}
               {stats.source === "fallback" ? " (cached)" : ""}
             </>
           : isLoading
-            ? "Fetching live total from Back a Buddy…"
+            ? "Fetching live total…"
             : "Could not reach Back a Buddy — showing last known value."}
       </p>
     </div>
