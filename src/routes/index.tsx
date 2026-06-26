@@ -3,8 +3,9 @@ import { BookOpen, Music2, Heart, Share2 } from "lucide-react";
 import heroDuet from "@/assets/hero-duet.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroVideoPlayer } from "@/components/site/HeroVideoPlayer";
+import { HeroPlayCta } from "@/components/site/HeroPlayCta";
 import { getBackabuddyStats } from "@/lib/backabuddy.functions";
-import type { BackabuddyStats } from "@/lib/backabuddy.functions";
+import { fetchCombinedTotals } from "@/lib/totals.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,11 +29,11 @@ export const Route = createFileRoute("/")({
     links: [{ rel: "canonical", href: "/" }],
   }),
   loader: async () => {
-    try {
-      return { backabuddyStats: await getBackabuddyStats() };
-    } catch {
-      return { backabuddyStats: undefined };
-    }
+    const [backabuddyStats, combinedTotals] = await Promise.all([
+      getBackabuddyStats().catch(() => undefined),
+      fetchCombinedTotals().catch(() => undefined),
+    ]);
+    return { backabuddyStats, combinedTotals };
   },
   component: HomePage,
 });
