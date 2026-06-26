@@ -96,7 +96,7 @@ export function AiHelper() {
                       {text}
                     </div>
                   ) : (
-                    <div className="prose prose-sm max-w-none text-[color:var(--cream)]/90 prose-a:text-[color:var(--gold)] prose-strong:text-[color:var(--cream)]">
+                    <div className="space-y-2 text-[color:var(--cream)]/90 [&_a]:text-[color:var(--gold)] [&_a]:underline [&_strong]:text-[color:var(--cream)] [&_p]:leading-relaxed [&_ul]:ml-4 [&_ul]:list-disc [&_ol]:ml-4 [&_ol]:list-decimal [&_code]:rounded [&_code]:bg-white/10 [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-xs">
                       <ReactMarkdown>{text}</ReactMarkdown>
                     </div>
                   )}
