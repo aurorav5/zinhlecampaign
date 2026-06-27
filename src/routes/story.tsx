@@ -51,10 +51,10 @@ function StoryPage() {
           <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Story</p>
           <h1 className="mt-4 font-display text-4xl leading-[1.1] sm:text-5xl md:text-6xl">
             She Sang to a Tortoise
-            <span className="block text-[color:var(--ink)]/70">— And Didn't Know I Was There</span>
+            <span className="block text-[color:var(--ink)]/70">And Didn't Know I Was There</span>
           </h1>
-          <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[color:var(--ink)]/55">
-            By Phil Bölke · Baviaanskloof, Eastern Cape
+          <p className="mt-4 text-sm text-[color:var(--ink)]/55">
+            Phil Bölke · Baviaanskloof, Eastern Cape
           </p>
         </Reveal>
 
