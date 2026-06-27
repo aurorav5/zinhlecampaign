@@ -26,20 +26,21 @@ export const Route = createFileRoute("/story")({
 });
 
 const PARAGRAPHS = [
-  "There's a dirt road in the Baviaanskloof, Eastern Cape, that most people will never drive. It cuts through one of the most remote, most beautiful valleys in South Africa — a place where the mountain meets the sky and time moves differently.",
-  "I was driving home on that road when I found a massive old tortoise planted square in the middle of it. The kind that's been walking this earth longer than any of us have been worrying about anything. I stopped, got out, and moved it — barely, it was enormous — and stood there for a moment just breathing, looking at this ancient thing that had absolutely nowhere urgent to be.",
-  "That's when I heard her.",
-  "A young woman, walking the road, coming closer. Singing to herself. Not performing. Not practicing. Just singing the way you only do when you are completely alone and completely free.",
-  "I didn't move. I didn't want to break whatever that was.",
-  "She is 19 years old. She grew up on a farm in this valley. Nobody handed her a dream — not because people didn't care, but because in her world, that kind of dream simply wasn't on the table. She has never had a vocal coach, never had a recording session, never stood in a proper studio until recently. The first time she came to record she was too respectful to sit on the couch. Too humble to use the same cups.",
-  "That's who she is.",
-  "I'm Phil Bölke — an engineer, a producer, and someone who has spent years working on technology that demands everything I have. I have a PCT patent filing deadline in December 2026 that represents years of my life. Time is the one thing I genuinely cannot afford to waste right now.",
-  "I'm spending it on this anyway. Because some things you don't walk away from.",
-  "We recorded together. Her voice on those recordings stopped everyone who heard them — including her own mother, who heard them for the first time on Father's Day and couldn't hold herself together. The daughter just stood there twinkling, not fully understanding yet what everyone else in the room already knew.",
-  "When she returns, she comes back to a fully equipped professional studio — ThatGuy Productions International, built into the Baviaanskloof itself — where her debut album will be produced in full, at no cost to her. Recorded, mastered, distributed. The real thing, done properly. That part is already decided. That part is already mine to carry.",
-  "But a studio cannot give her the one thing she actually needs first: the financial footing to move through a world that will try to own her if she arrives without it. Talent is not the problem. The world is full of people with extraordinary gifts who never got anywhere because the moment they stepped toward something, they needed someone else's money, someone else's car, someone else's couch — and that dependency became the price of entry. Slowly, quietly, the dream stops being theirs.",
-  "There is a campaign. This page is part of it.",
-  "If you've ever had someone believe in you before you believed in yourself, you already know exactly what this is.",
+  "The road home is a dirt one. It cuts through the Baviaanskloof in the Eastern Cape — a valley where the mountains don't ask permission, and the afternoons move so slowly you can hear yourself thinking. I was driving it late one afternoon when I found an old tortoise parked in the middle of the track. Massive thing. The kind that's been walking these hills since before any of us had plans.",
+  "I stopped the bakkie, got out, and lifted it across. It was heavier than I expected. When I stood up again, dust on my hands, I heard singing.",
+  "Not a performance. Not a song meant for an audience. A young woman walking alone, miles from anywhere, singing to herself the way you only do when you believe no one is listening.",
+  "I stayed still. I didn't want to interrupt whatever that was. She was nineteen, and she had grown up on a farm in this valley. In her world, a dream like this wasn't missing — it had never been placed on the table in the first place. No singing lessons. No studio. No one telling her that voice was anything other than a private thing, like talking to yourself.",
+  "I watched her walk past, still singing, and I felt something shift. It was not a plan. It was not a project. It was the feeling that someone had just handed you something fragile and asked, without saying a word, if you would be careful with it.",
+  "Her name is Zinhle.",
+  "The first time she came to record, she was too respectful to sit on the couch. Too humble to use the same cups. She stood in the doorway with her shoes clean and her voice quiet, as if the studio might be a place she wasn't allowed to want.",
+  "We recorded anyway. I played those recordings to people who know music. Each time, the room stopped. Her mother heard them for the first time on Father's Day and couldn't hold herself together. Zinhle stood there twinkling, not understanding yet what everyone else already knew: that this was not small, and that it was no longer only hers.",
+  "That is the part of the story that is beautiful. But it is not the whole story.",
+  "A voice like that is not enough by itself. The world is full of people who were given a gift and then slowly convinced to hand it over — for a ride, for a place to sleep, for someone else's permission. I have watched it happen. The dream starts as yours, and then it becomes a debt, and then one day you look up and you are singing songs you never chose for people you do not know.",
+  "Zinhle's dream is changing now. It is no longer just a thing she does when the road is empty. She has heard it back. She knows it is real. And because of that, the danger is also real — the danger of arriving without footing, without a little money of her own, without a way to say yes or no on her own terms.",
+  "That is what this is about. Not making a star. Not building a brand. Just giving a nineteen-year-old enough room to find out what her voice can become when nobody owns it but her.",
+  "My name is Phil Bölke. I am an engineer and producer in this valley. I have a studio here, and I have time I should probably be spending on something else — a patent filing that has been years of my life and is due in December 2026. Time is not something I have in abundance.",
+  "But I am spending it on this anyway. Because some things you don't walk away from, and some voices you don't let get smaller just because the road around them is quiet.",
+  "If you have ever had someone believe in you before you believed in yourself, you already know what this is. You are the reason I am writing this down.",
 ];
 
 function StoryPage() {
@@ -50,10 +51,10 @@ function StoryPage() {
           <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--gold)]">The Story</p>
           <h1 className="mt-4 font-display text-4xl leading-[1.1] sm:text-5xl md:text-6xl">
             She Sang to a Tortoise
-            <span className="block text-[color:var(--ink)]/70">— And Didn't Know I Was There</span>
+            <span className="block text-[color:var(--ink)]/70">And Didn't Know I Was There</span>
           </h1>
-          <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[color:var(--ink)]/55">
-            By Phil Bölke · Baviaanskloof, Eastern Cape
+          <p className="mt-4 text-sm text-[color:var(--ink)]/55">
+            Phil Bölke · Baviaanskloof, Eastern Cape
           </p>
         </Reveal>
 
