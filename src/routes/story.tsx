@@ -43,6 +43,12 @@ const PARAGRAPHS = [
   "If you have ever had someone believe in you before you believed in yourself, you already know what this is. You are the reason I am writing this down.",
 ];
 
+const IMAGINE = [
+  "You grew up on a farm because that's where your mother works. The Baviaanskloof is all you've ever really known. You've never stayed in a hotel. You've never walked through a city full of skyscrapers. You don't dream about becoming a recording artist, because nobody has ever shown you that a life like that could be yours.",
+  "So you sing. Out on the dirt road, because there's no signal out there to pull you anywhere else, no audience, no one telling you what to be. Just you and the sound of your own voice in the open air.",
+  "Then one afternoon, a stranger hears you. And for the first time, the dream stops being private.",
+];
+
 function StoryPage() {
   return (
     <article className="bg-[color:var(--offwhite)] px-5 pt-32 pb-24 text-[color:var(--ink)] md:pt-40">
@@ -56,6 +62,17 @@ function StoryPage() {
           <p className="mt-4 text-sm text-[color:var(--ink)]/55">
             Phil Bölke · Baviaanskloof, Eastern Cape
           </p>
+        </Reveal>
+
+        <Reveal>
+          <aside className="mt-12 rounded-2xl border-l-4 border-[color:var(--gold)] bg-white/60 p-7 md:p-9">
+            <p className="font-display text-2xl text-[color:var(--ink)]">Imagine you're 19 years old.</p>
+            <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-[color:var(--ink)]/80">
+              {IMAGINE.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </aside>
         </Reveal>
 
         <div className="mt-14 space-y-7">
@@ -73,6 +90,7 @@ function StoryPage() {
             </Reveal>
           ))}
         </div>
+
 
         <Reveal>
           <div className="mt-16 border-t border-[color:var(--ink)]/15 pt-10">
