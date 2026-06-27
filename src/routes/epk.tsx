@@ -131,8 +131,19 @@ function EpkPage() {
                 </p>
               </div>
             </Reveal>
+            <Reveal delay={0.2}>
+              <figure className="mt-10 rounded-2xl border-l-4 border-[color:var(--gold)] bg-white p-7 md:p-9">
+                <blockquote className="font-display text-xl leading-snug text-[color:var(--ink)] md:text-2xl">
+                  "Imagine you're 19. You've never stayed in a hotel. You've never walked through a city full of skyscrapers. You don't dream about becoming a recording artist, because nobody has ever shown you that a life like that could be yours. So you sing — out on the dirt road, because there's no signal to pull you anywhere else, no audience, no one telling you what to be."
+                </blockquote>
+                <figcaption className="mt-4 text-sm uppercase tracking-[0.28em] text-[color:var(--ink)]/55">
+                  Artist perspective
+                </figcaption>
+              </figure>
+            </Reveal>
           </div>
         </section>
+
 
         <section className="px-5 py-20 bg-[color:var(--ink)]/5 border-y border-[color:var(--ink)]/10">
           <div className="mx-auto max-w-5xl">
