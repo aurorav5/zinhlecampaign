@@ -97,7 +97,7 @@ function HomePage() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-3 text-sm text-[color:var(--cream)]/65 sm:text-base">
-              A true story from the Baviaanskloof, Eastern Cape.
+              A campaign to protect the independence of an extraordinary Eastern Cape voice.
             </p>
           </Reveal>
         </div>

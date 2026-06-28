@@ -26,21 +26,20 @@ export const Route = createFileRoute("/story")({
 });
 
 const PARAGRAPHS = [
-  "The road home is a dirt one. It cuts through the Baviaanskloof in the Eastern Cape — a valley where the mountains don't ask permission, and the afternoons move so slowly you can hear yourself thinking. I was driving it late one afternoon when I found an old tortoise parked in the middle of the track. Massive thing. The kind that's been walking these hills since before any of us had plans.",
-  "I stopped the bakkie, got out, and lifted it across. It was heavier than I expected. When I stood up again, dust on my hands, I heard singing.",
-  "Not a performance. Not a song meant for an audience. A young woman walking alone, miles from anywhere, singing to herself the way you only do when you believe no one is listening.",
-  "I stayed still. I didn't want to interrupt whatever that was. She was nineteen, and she had grown up on a farm in this valley. In her world, a dream like this wasn't missing — it had never been placed on the table in the first place. No singing lessons. No studio. No one telling her that voice was anything other than a private thing, like talking to yourself.",
-  "I watched her walk past, still singing, and I felt something shift. It was not a plan. It was not a project. It was the feeling that someone had just handed you something fragile and asked, without saying a word, if you would be careful with it.",
-  "Her name is Zinhle.",
-  "The first time she came to record, she was too respectful to sit on the couch. Too humble to use the same cups. She stood in the doorway with her shoes clean and her voice quiet, as if the studio might be a place she wasn't allowed to want.",
-  "We recorded anyway. I played those recordings to people who know music. Each time, the room stopped. Her mother heard them for the first time on Father's Day and couldn't hold herself together. Zinhle stood there twinkling, not understanding yet what everyone else already knew: that this was not small, and that it was no longer only hers.",
-  "That is the part of the story that is beautiful. But it is not the whole story.",
-  "A voice like that is not enough by itself. The world is full of people who were given a gift and then slowly convinced to hand it over — for a ride, for a place to sleep, for someone else's permission. I have watched it happen. The dream starts as yours, and then it becomes a debt, and then one day you look up and you are singing songs you never chose for people you do not know.",
-  "Zinhle's dream is changing now. It is no longer just a thing she does when the road is empty. She has heard it back. She knows it is real. And because of that, the danger is also real — the danger of arriving without footing, without a little money of her own, without a way to say yes or no on her own terms.",
-  "That is what this is about. Not making a star. Not building a brand. Just giving a nineteen-year-old enough room to find out what her voice can become when nobody owns it but her.",
-  "My name is Phil Bölke. I am an engineer and producer in this valley. I have a studio here, and I have time I should probably be spending on something else — a patent filing that has been years of my life and is due in December 2026. Time is not something I have in abundance.",
-  "But I am spending it on this anyway. Because some things you don't walk away from, and some voices you don't let get smaller just because the road around them is quiet.",
-  "If you have ever had someone believe in you before you believed in yourself, you already know what this is. You are the reason I am writing this down.",
+  `The road home is a dirt one. It cuts through the Baviaanskloof in the Eastern Cape — mountains that don't ask permission, afternoons that move slow enough to hear yourself think. I was driving it one afternoon when I found an old tortoise parked in the middle of the track.`,
+  `I stopped, got out, and carried it across. Heavier than it looked. When I straightened up, dust still on my hands, I heard someone singing.`,
+  `Not a performance. Not rehearsal. A young woman walking alone, singing to herself the way you only do when you're certain nobody is listening.`,
+  `Her name is Zinhle.`,
+  `She's nineteen. Grew up on a farm in this valley, where her mother still works. No studio experience. No vocal coach. No one had ever formally told her what she carries — she'd never had a reason to think it mattered. I didn't discover a project that day. I discovered a voice that didn't know it was being watched.`,
+  `The first time she came to record, she wouldn't sit on the couch. Stood in the doorway with her shoes clean and her voice quiet, as if the studio might be a place she wasn't allowed to want.`,
+  `We recorded anyway. By the end of that session, she had something that stopped her own family cold when they played it back in the car. Her mother heard it for the first time on Father's Day and couldn't hold herself together.`,
+  `The single is called "Who I Am." It's the first recorded work she has ever made.`,
+  `That's the part of the story that's beautiful. It isn't the whole story.`,
+  `Most artists don't fail because of talent. They fail because arriving costs money. And when arriving costs money you don't have, someone else pays for it — and when someone else pays, they begin to shape the outcome. Not always deliberately. Almost always inevitably.`,
+  `Zinhle's dream is changing now. It's no longer just a thing she does when the road is empty — she's heard it back, she knows it's real, and that means the danger is real too: the danger of arriving without footing, without a little money of her own, without a way to say yes or no on her own terms.`,
+  `That's what this is about. Not making a star. Just giving a nineteen-year-old enough room to find out what her voice can become when nobody owns it but her.`,
+  `My name is Phil Bölke. I'm an engineer and producer in this valley — I also have a patent filing years in the making, due December 2026, that should probably be getting this time instead. But some things you don't walk away from, and some voices you don't let get smaller just because the road around them is quiet.`,
+  `If you've ever had someone believe in you before you believed in yourself, you already know what this is.`,
 ];
 
 const IMAGINE = [
